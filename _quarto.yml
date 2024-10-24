@@ -3,17 +3,19 @@ project:
   output-dir: docs
 
 website:
-  title: "a-nhmai.github.io"
+  title: "MaiPage"
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+   left:
+     - href: index.qmd
+       text: Home
+     - about.qmd
+     - Mini-Project1.qmd
+     - Mini-Project2.qmd
 
 format:
   html:
-    theme: 
-      light: minty
+    theme:
+      light: mint
       dark: solar
     css: styles.css
 
