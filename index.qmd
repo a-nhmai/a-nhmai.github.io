@@ -1,11 +1,22 @@
 ---
-title: "a-nhmai.github.io"
+title: "MaiPage"
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/anhmai1495/
+    - text: GitHub
+      href: https://github.com/a-nhmai
 ---
 
-This is a Quarto website.
+Welcome to Mai Webpage!
+
+I am a 4th-year Environmental Studies Major at St. Olaf College in southern Minnesota. I also study Statistics and Data Science as well as Race and Ethnic Studies.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
-```{r}
+```{r, eval = FALSE}
 1 + 1
 ```
