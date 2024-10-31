@@ -20,7 +20,9 @@ format:
       light: mint
       dark: solar
     css: styles.css
+    
 editor: visual
+
 publish:
   server: shinyapps
   account: maipage
