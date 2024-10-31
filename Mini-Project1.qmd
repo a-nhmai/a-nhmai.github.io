@@ -1,0 +1,254 @@
+---
+title: "Mini Project 1"
+---
+
+Information about Mini Project 1
+
+```{r setup, include=FALSE}
+#These are the libraries needed to create the maps and load in the data. 
+library(maps)
+library(sf)
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(viridis)
+library(leaflet)
+library(datasets)
+
+```
+
+# Loading in Data
+
+```{r}
+#This data is from the library ggplot2 to make the static versions of the maps. 
+states_polygon <- as_tibble(map_data("state")) |>
+  select(region, group, order, lat, long)
+
+#This data is a simple features map for our interactive leaflet maps later on. 
+states_sf <- read_sf("https://rstudio.github.io/leaflet/json/us-states.geojson")     
+
+#This data is from the following website and has species listings by state based
+#if the species' spatial range is believed to be associated with that state. 
+#https://ecos.fws.gov/ecp/report/species-listings-by-state-totals?statusCategory=Listed
+species_states <- read_csv("C:/Users/27mai/Documents/a-nhmai.github.io/data/species-listings-by-state-totals-report.csv") 
+
+#This dataset is from the Poliscidata in R and I specifcally wanted to look at which states weed policies. 
+#install.packages("poliscidata") -- Use this code if you haven't installed the package. 
+library(poliscidata)
+
+#This data is needed to load in the pot policy variable from the "states" data from the "Poliscidata" package.
+data("states")
+weed_law_states <- as.data.frame(states)
+weed_law_states <- weed_law_states |> 
+  select(state, pot_policy) |> 
+  mutate(state = str_replace_all(state, "(?<!^)(?=[A-Z])", " ")) |> #This adds a space before any capitalized letters. 
+  mutate(state = str_trim(state)) #This gets rid of spaces at the beginning of the observations. 
+
+```
+
+Data Filtering and Joining
+
+```{r}
+#For the species dataset, I wanted mainly the continental United States. 
+  species_states <- species_states |>
+    group_by(State) |>
+    filter(!State %in% c("Outlying Caribbean Islands", "Virgin Islands", "Outlying Pacific Islands", "Northern Mariana Islands", "American Samoa", "Guam")) |>
+    rename(numSpecies = `Number of Species Listings`)
+
+```
+
+# Joining the Species and Weed Law Data with the Mapping Data
+
+```{r}
+#Polygon Maps
+
+  #Joining the species by state data to the polygon data.
+  
+    #First I will check the formatting of the states to align keys. 
+    unique(species_states$State)
+    unique(states_polygon$region) #This one is all lowercase.
+    
+    #Changing the keys to match.
+    species_states <- species_states |>
+      mutate(State = str_to_lower(State)
+      )
+    
+    #Now joining with a left_join
+    species_states_polygon <- states_polygon |> left_join(
+      species_states, 
+      by = c("region" = "State")
+    )
+    
+    #Checking if the states lined up
+    unique(species_states_polygon$region)
+  
+    
+  #Joining the weed laws with the polygon data using the
+  #same process.
+    
+    unique(weed_law_states$state)
+    
+    weed_law_states <- weed_law_states |>
+      mutate(State = str_to_lower(state)
+      )
+    
+    weed_law_polygon <- states_polygon |> left_join(
+      weed_law_states, 
+      by = c("region" = "State")
+    )
+    
+    unique(weed_law_polygon$region)
+    
+#Sf Maps, using the same process.    
+    
+  #Species data    
+  unique(states_sf$name)
+  unique(species_states$State)
+  
+  states_sf <- states_sf |>
+    mutate(name = str_to_lower(name))
+      
+  species_states_sf <- states_sf |>
+    left_join(species_states, by = c("name" = "State"))
+  
+  unique(species_states_sf)
+  
+  #Weed Laws across states
+      
+  unique(states_sf$name)
+  unique(weed_law_states$State)
+      
+  weed_law_states_sf <- states_sf |>
+    left_join(weed_law_states, by = c("name" = "State"))
+  
+  unique(weed_law_states_sf)
+    
+
+```
+
+#Making the Numeric variable (static) map Data from \[<https://ecos.fws.gov/ecp/report/species-listings-by-state-totals?statusCategory=Listed%5D>
+
+```{r}
+species_states_polygon |>
+  ggplot(aes(x = long, y = lat, group = group))+
+  geom_polygon(aes(fill = numSpecies), color = "black")+
+  theme_void()+
+  scale_fill_viridis()+
+  labs(title = "Listed species with current spatial range believed to or known to occur in states \n across the US",
+    fill = "Number of listed species",
+    subtitle = "Data from https://ecos.fws.gov/ecp/report/species-listings-by-state-totals?statusCategory=Listed",
+    caption = "This map shows there is a high number of species believed to have spatial range \n associated with California and regions in the South. More Northern regions have a lower number\n of species listed. This data may be limited to sampling accessibility and data collection biases. \nAdditionally, this map excludes Hawaii which has 490 listed species and Alaska with 8 listed species.")
+```
+
+#Making the Numeric Variable (interactive) map Data from \[<https://ecos.fws.gov/ecp/report/species-listings-by-state-totals?statusCategory=Listed%5D>
+
+```{r}
+#I wanted to make labels that would show up when someone interacts with the map.
+#It coordinates to the name of the state as well as the number of species listed. 
+species_states_sf <- species_states_sf |>
+  mutate(labels = str_c(name, " - ", numSpecies, " species listed"))
+
+leaflet(species_states_sf) |>
+  setView(-96, 37.8, 4) |>
+  addTiles() |>
+  addPolygons(
+    weight = 2,
+    opacity = 0.8,
+    color = "black",  
+    fillColor = ~colorNumeric("Greens", numSpecies)(numSpecies),
+    dashArray = "2",
+    fillOpacity = 1,
+    highlightOptions = highlightOptions(
+      weight = 5,
+      color = "#666",
+      dashArray = "",
+      fillOpacity = 0.7,
+      bringToFront = TRUE
+    ),
+    label = ~labels,  # Use the labels directly
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto"
+    )
+  ) |>
+  addControl("<strong>Listed species with current spatial range believed to or known to occur in states across the US</strong>", position = "topright") |>
+  addControl("From this map, we see a large concentration of species with current spatial ranges in California and southern regions of the United States. There is a possibility that more sampling occurs in these areas and can inflate species observations. Thus, this map should not be taken as a biodiversity distribution map.", position = "bottomleft")
+```
+
+#Making the Categorical variable (static plot) map Data from R Package \[Poliscidata\]
+
+Alt-Text for this Plot
+
+-   This is a map of the continental United States that shows the policy of weed by state. Lighter colors indicate legislation that is pending or has ruled for the illegalization of weed. Darker colors indicate the legalization of medicinal weed or entire decriminalization of weed. On the West coast, there is a pattern of decriminalization whereas most Midwestern or Southern states have ruled for weed to be illegal. On the East coast, near the New England area, more states are ruling for the decriminalization of cannibas as well.
+
+```{r}
+weed_law_polygon |>
+  ggplot(aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = pot_policy), color = "black")+
+  coord_map() +
+  theme_void() +
+  scale_fill_manual(values = c("#ffffcc", "#c2e699", "#78c679", "#31a354", "#006837"))+
+  labs(title = "Weed Policy",
+       caption = "Data from R Package [Poliscidata]",
+       fill = "Status")
+```
+
+#Making the Categorical variable (interactive plot) map Data from R Package \[Poliscidata\]
+
+
+```{r}
+library(RColorBrewer)
+
+# Define color palette based on pot_policy
+factpal <- colorFactor(
+  palette = c("#ffffcc", "#c2e699", "#78c679", "#31a354", "#006837"),
+  domain = weed_law_states_sf$pot_policy
+)
+
+# Ensure weed_law_states_sf is in the correct projection (WGS84)
+weed_law_states_sf <- st_transform(weed_law_states_sf, crs = 4326)
+
+# Define labels as a character vector, not a list
+labels <- paste(
+  "<strong>", weed_law_states_sf$state_name, "</strong><br/>Policy: ", weed_law_states_sf$pot_policy
+)
+
+# Create leaflet map
+leaflet(weed_law_states_sf) |>
+  setView(-96, 37.8, 4) |>
+  addTiles() |>
+  addPolygons(
+    weight = 2,
+    opacity = 1,
+    color = "black",
+    fillColor = ~factpal(pot_policy),
+    dashArray = "3",
+    fillOpacity = 0.7,
+    highlightOptions = highlightOptions(
+      weight = 5,
+      color = "#666",
+      dashArray = "",
+      fillOpacity = 0.7,
+      bringToFront = TRUE
+    ),
+    label = labels,  # Now a character vector
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto"
+    )
+  ) |>
+  addLegend(
+    pal = factpal,
+    values = ~pot_policy,
+    opacity = 0.7,
+    title = "Weed Policy Status",
+    position = "bottomright"
+  ) |>
+  addControl("<strong>Weed Law Status across the U.S.</strong>", position = "topright") |>
+  addControl("This map shows the weed law rulings across the U.S. Western states tend to have legalized and decriminalized weed, while Southern and Midwestern states often have illegal rulings or ongoing litigation.", position = "bottomright")
+
+```
+

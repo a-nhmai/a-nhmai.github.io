@@ -1,23 +1,26 @@
+---
 project:
   type: website
   output-dir: docs
-
 website:
-  title: "MaiPage"
+  title: MaiPage
   navbar:
-   left:
-     - href: index.qmd
-       text: Home
-     - about.qmd
-     - Mini-Project1.qmd
-     - Mini-Project2.qmd
-
+    left:
+      - href: index.qmd
+        text: Home
+      - href: CV.qmd
+        text: CV
+      - href: Mini-Project1.qmd
+        text: Mini Project 1
+      - href: Mini-Project2.qmd
+        text: Mini Project 2
 format:
   html:
     theme:
       light: mint
       dark: solar
     css: styles.css
-
 editor: visual
-
+publish:
+  server: shinyapps
+  account: maipage

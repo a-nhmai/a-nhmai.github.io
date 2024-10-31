@@ -1,0 +1,9 @@
+---
+title: "CV"
+---
+
+![](media/MaiA_CV_Quarto_Web-1.png){fig-align="center"}
+
+![](media/MaiA_CV_Quarto_Web-2.png){fig-align="center"}
+
+![](media/MaiA_CV_Quarto_Web-3.png){fig-align="center"}

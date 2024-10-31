@@ -5,25 +5,36 @@ navbar:
    left:
      - href: index.qmd
        text: Home
-     - about.qmd
-     - resources.qmd
 about: 
-  template: jolla
-  image-shape: round
-  image-width: 17em
+  template: solana
+  id: intro-heading
+  image: media/Screenshot 2024-10-29 124117.png
+  image-shape: rectangle
+  image-width: 30em
   links:
-    - text: LinkedIn
+    - icon: linkedin
       href: https://www.linkedin.com/in/anhmai1495/
-    - text: GitHub
+    - icon: github
       href: https://github.com/a-nhmai
 ---
 
-**Welcome to Mai Webpage!**
+::: {#intro-heading}
+##    **Anh Mai**
 
-I am a **4th-year Environmental Studies Major** at St. Olaf College in southern Minnesota. I also study **Statistics and Data Science** as well as **Race and Ethnic Studies**.
+**Pronunciation <br>**
+/on my/
 
-Click the 3 lines on the top left of the page to **access more information about me** and 2 **projects** from my Data Science class!!
+**Pronouns <br>**
+she/her
 
-See below to **connect with me** and more information about the construction of this website.
+**About <br>**
+Prospective statistical ecology graduate student
 
-Don't like the **theme**? Click the **switch** on the section to the right of the website title and three lines.
+4th-year Environmental Studies Major (Natural Science) at St. Olaf College<br>
+
+Concentrations in: <br> Statistics and Data Science <br> Race and Ethnic Studies
+
+Connect with me for more information about the construction of this website.
+:::
+
+*Don't like the theme? Click the switch on top right!*
