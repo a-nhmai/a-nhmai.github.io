@@ -10,11 +10,8 @@ website:
       - href: index.qmd
         text: Home
       - href: CV.qmd
-        text: CV
       - href: Mini-Project1.qmd
-        text: Mini Project 1
       - href: Mini-Project2.qmd
-        text: Mini Project 2
 
 format:
   html:
