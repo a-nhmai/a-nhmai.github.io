@@ -2,7 +2,15 @@
 title: "Mini Project 1"
 ---
 
-Information about Mini Project 1
+# Overview
+
+This was a project for my Data Science 2 class in which we were asked to make maps, both static and interactive on data of our choosing. To see the specific code I utilized, please visit my GitHub and fin the Mini-Project1.qmd!
+
+Sources of my data;
+
+-   state dataset (weed policy) – R US State Facts and Figures
+
+-   species dataset – <https://ecos.fws.gov/ecp/report/species-listings-by-state-totals?statusCategory=Listed>
 
 ```{r setup, include=FALSE}
 #These are the libraries needed to create the maps and load in the data. 
@@ -18,9 +26,7 @@ library(datasets)
 
 ```
 
-# Loading in Data
-
-```{r}
+```{r, include = FALSE}
 #This data is from the library ggplot2 to make the static versions of the maps. 
 states_polygon <- as_tibble(map_data("state")) |>
   select(region, group, order, lat, long)
@@ -47,9 +53,7 @@ weed_law_states <- weed_law_states |>
 
 ```
 
-Data Filtering and Joining
-
-```{r}
+```{r, include = FALSE}
 #For the species dataset, I wanted mainly the continental United States. 
   species_states <- species_states |>
     group_by(State) |>
@@ -58,9 +62,7 @@ Data Filtering and Joining
 
 ```
 
-# Joining the Species and Weed Law Data with the Mapping Data
-
-```{r}
+```{r, include = FALSE}
 #Polygon Maps
 
   #Joining the species by state data to the polygon data.
@@ -127,7 +129,7 @@ Data Filtering and Joining
 
 ```
 
-#Making the Numeric variable (static) map Data from \[<https://ecos.fws.gov/ecp/report/species-listings-by-state-totals?statusCategory=Listed%5D>
+# Static Map of Species Spatial Range
 
 ```{r}
 species_states_polygon |>
@@ -141,7 +143,7 @@ species_states_polygon |>
     caption = "This map shows there is a high number of species believed to have spatial range \n associated with California and regions in the South. More Northern regions have a lower number\n of species listed. This data may be limited to sampling accessibility and data collection biases. \nAdditionally, this map excludes Hawaii which has 490 listed species and Alaska with 8 listed species.")
 ```
 
-#Making the Numeric Variable (interactive) map Data from \[<https://ecos.fws.gov/ecp/report/species-listings-by-state-totals?statusCategory=Listed%5D>
+# Interactive Map of Species Spatial Range
 
 ```{r}
 #I wanted to make labels that would show up when someone interacts with the map.
@@ -177,7 +179,7 @@ leaflet(species_states_sf) |>
   addControl("From this map, we see a large concentration of species with current spatial ranges in California and southern regions of the United States. There is a possibility that more sampling occurs in these areas and can inflate species observations. Thus, this map should not be taken as a biodiversity distribution map.", position = "bottomleft")
 ```
 
-#Making the Categorical variable (static plot) map Data from R Package \[Poliscidata\]
+# Static Plot of US State Weed Policy
 
 Alt-Text for this Plot
 
@@ -195,8 +197,7 @@ weed_law_polygon |>
        fill = "Status")
 ```
 
-#Making the Categorical variable (interactive plot) map Data from R Package \[Poliscidata\]
-
+# Interactive Plot of US State Weed Policy
 
 ```{r}
 library(RColorBrewer)
@@ -251,4 +252,3 @@ leaflet(weed_law_states_sf) |>
   addControl("This map shows the weed law rulings across the U.S. Western states tend to have legalized and decriminalized weed, while Southern and Midwestern states often have illegal rulings or ongoing litigation.", position = "bottomright")
 
 ```
-
