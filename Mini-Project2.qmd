@@ -2,7 +2,11 @@
 title: "Mini Project 2"
 ---
 
-Information about Mini Project 2
+# Information about Mini Project 2
+
+-   This is from my Data Science 2 class where we focused on scraping data from a website. My partner Gracia and I chose some Boston Marathon data.
+
+-   We ran into some fun issues and made functions due to there being a lack of a marathon in 2020 and non-binary becoming a category for self-identification in 2022.
 
 ```{r}
 #| include: FALSE
