@@ -12,6 +12,7 @@ website:
       - href: CV.qmd
       - href: Mini-Project1.qmd
       - href: Mini-Project2.qmd
+      - href: GCRUS-PPT.qmd
 
 format:
   html:
