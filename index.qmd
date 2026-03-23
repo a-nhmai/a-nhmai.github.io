@@ -1,10 +1,11 @@
 ---
 title: "Anh Mai"
+subtitle: "1st-Yr Ph.D. Student interested in tree biodiversity, conservation policy, and equitable science"
 image: images/pw_headshot.jpg
 toc: false
 about: 
   template: jolla
-  image-shape: rounded
+  image-shape: round
   image-width: 17em
   links:
     - text: LinkedIn
@@ -13,3 +14,4 @@ about:
       href: https://github.com/a-nhmai/a-nhmai.github.io
 ---
         
+
