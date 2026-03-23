@@ -1,6 +1,7 @@
 ---
 title: "Anh Mai"
-subtitle: "1st-Yr Ph.D. Student interested in tree biodiversity, conservation policy, and equitable science"
+subtitle: "University of Minnesota-Twin Cities"
+affilitation: "University of Minnesota-Twin Cities"
 image: images/pw_headshot.jpg
 toc: false
 about: 
