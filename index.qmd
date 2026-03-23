@@ -10,7 +10,7 @@ about:
   image-width: 17em
 ---
 
-::: column-page-left
+::: column-page-leftuse
 
 **Research interests**
 
@@ -18,5 +18,6 @@ about:
 
 **How to connect with me**
 
-:   mai00099 at umn.edu \| [LinkedIn](https://www.linkedin.com/in/anhmai1495/) \| [Github](https://github.com/a-nhmai)
+:   mai00099 at umn.edu \| [LinkedIn](https://www.linkedin.com/in/anhmai1495/) \| [Github](https://github.com/a-nhmai) 
 :::
+
