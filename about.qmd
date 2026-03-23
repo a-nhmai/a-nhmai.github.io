@@ -1,15 +1,14 @@
 ---
 title: "About Me"
-image: images/pw_harv_forest.jpeg
 ---
 
 **Education**
 
-I am a first-year in the Ecology, Evolution, and Behavior (EEB) Ph.D. program at the University of Minnesota-Twin Cities. Specifically, I am in the Pinto-Ledezma. Previously, I completed my undergraduate degree in 2025 at St. Olaf College in Southern Minnesota.
+I am a first-year in the Ecology, Evolution, and Behavior (EEB) Ph.D. program at the University of Minnesota-Twin Cities. Specifically, I am in the Pinto-Ledezma Lab. Previously, I completed my undergraduate degree in 2025 at St. Olaf College in Southern Minnesota.
 
 I am currently still developing my thesis topic but plan to focus on **angiosperm tree species vulnerability to extinction factors from a phylogenetic perspective.**
 
-I value interdisciplinary work and will integrate this into my work as I think about the future of climate action and being a better global citizen, constantly expanding my network and learning from those with different stories from me.
+I value interdisciplinary work and will integrate this into my research as I think about the future of climate action and being a better global citizen, constantly expanding my network and learning from those with different stories from me.
 
 **Beyond work**
 
