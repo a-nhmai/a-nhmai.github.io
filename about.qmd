@@ -1,6 +1,6 @@
 ---
 title: "About Me"
-image: pw_harv_forest.jpeg
+image: images/pw_harv_forest.jpeg
 ---
 
 **Education**
@@ -16,5 +16,3 @@ I value interdisciplinary work and will integrate this into my work as I think a
 I am passionate about social justice in many forms, and I am active in the community to create a world more inclusive of the diversities of life. As a first-generation college and graduate student, encouraging budding scientists across identities and the organizations supporting them is paramount. I am a proud TRIO student and new McNair alumni.
 
 When I am not thinking about a sociocultural transformation, my hobbies include hiking, biking, drawing, painting, knitting, crocheting, and cooking.
-
-![](images/pw_harv_forest.jpeg){width="279"}
