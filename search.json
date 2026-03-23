@@ -2,15 +2,50 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About Me",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "I am a first-year in the Ecology, Evolution, and Behavior (EEB) Ph.D. program at the University of Minnesota-Twin Cities. Specifically, I am in the Pinto-Ledezma. Previously, I completed my undergraduate degree in 2025 at St. Olaf College in Southern Minnesota."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "a-nhmai.github.io",
+    "title": "Anh Mai",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "My name is pronounced “on my.”"
+  },
+  {
+    "objectID": "about.html#me",
+    "href": "about.html#me",
+    "title": "About",
+    "section": "",
+    "text": "I am a first-year in the Ecology, Evolution, and Behavior (EEB) Ph.D. program at the University of Minnesota-Twin Cities."
+  },
+  {
+    "objectID": "about.html#research",
+    "href": "about.html#research",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a first-year in the Ecology, Evolution, and Behavior (EEB) Ph.D. program at the University of Minnesota-Twin Cities. Specifically, I am in the Pinto-Ledezma."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a first-year in the Ecology, Evolution, and Behavior (EEB) Ph.D. program at the University of Minnesota-Twin Cities. Specifically, I am in the Pinto-Ledezma. Previously, I completed my undergraduate degree in 2025 at St. Olaf College in Southern Minnesota."
+  },
+  {
+    "objectID": "about.html#outside-of-work",
+    "href": "about.html#outside-of-work",
+    "title": "About Me",
+    "section": "Outside of work",
+    "text": "Outside of work\nlalala"
+  },
+  {
+    "objectID": "about.html#beyond-work",
+    "href": "about.html#beyond-work",
+    "title": "About Me",
+    "section": "Beyond work",
+    "text": "Beyond work\nI am passionate about social justice in many forms, and I am active in the community to create a world more inclusive of the diversities of life. As a first-generation college and graduate student, encouraging budding scientists across identities and the organizations supporting them is paramount. I am a proud TRIO student and new McNair alumni."
   }
 ]
