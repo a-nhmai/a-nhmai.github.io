@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '~/2026_Website/a-nhmai.github.io/_site'
+          path: '~/2026_Website/a-nhmai.github.io/_site/index.html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
