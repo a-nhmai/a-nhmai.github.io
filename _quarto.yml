@@ -10,7 +10,7 @@ website:
       - about.qmd
   page-footer:
     right: Copyright 2026, Anh Mai
-    left: Last updated 2026-03-27
+    left: Last updated 2026-04-02
 
 format:
   html:
