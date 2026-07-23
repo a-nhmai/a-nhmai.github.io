@@ -2,7 +2,7 @@
 title: "Anh Mai"
 subtitle: "University of Minnesota-Twin Cities"
 description: "2nd-Yr Ph.D. Student in Ecology, Evolution, and Behavior (EEB)"
-image: images/pw_headshot.jpg
+image: images/tree_pic.jpg
 toc: false
 about: 
   template: jolla
